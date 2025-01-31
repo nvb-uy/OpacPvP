@@ -29,14 +29,14 @@ public class CommandRegistry {
                     data.putBoolean("opacpvp", !old);
                     CustomDataHelper.setPersistentData(player, data);
 
-                    Text text = old ? Text.translatable("opacpvp.toggle.disabled") : Text.of("opacpvp.toggle.enabled");
+                    Text text = old ? Text.translatable("opacpvp.toggle.disabled") : Text.translatable("opacpvp.toggle.enabled");
 
                     player.sendMessage(text);
                 } else {
                     data.putBoolean("opacpvp", Configs.MAIN.personal_preference_default);
                     CustomDataHelper.setPersistentData(player, data);
 
-                    Text text = Configs.MAIN.personal_preference_default ? Text.translatable("opacpvp.toggle.enabled") : Text.of("opacpvp.toggle.disabled");
+                    Text text = Configs.MAIN.personal_preference_default ? Text.translatable("opacpvp.toggle.enabled") : Text.translatable("opacpvp.toggle.disabled");
 
                     player.sendMessage(text);
                 }
