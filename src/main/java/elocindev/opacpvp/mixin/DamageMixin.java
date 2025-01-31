@@ -24,8 +24,12 @@ import xaero.pac.common.server.api.OpenPACServerAPI;
 public class DamageMixin {
 
     //?if fabric {
-    @Inject(at = @At("HEAD"), method = "onSpawn")
-    public void opacpvp$onSpawn(CallbackInfo ci) {
+    @Inject(at = @At("HEAD"), method = "initDataTracker")
+    public void opacpvp$initDataTracker(
+        //?if >1.21 {
+        /*net.minecraft.entity.data.DataTracker.Builder builder,
+        *///?}
+            CallbackInfo ci) {
         PlayerEntity ths = (PlayerEntity) (Object) this;
         if (ths instanceof ServerPlayerEntity player) {
             NbtCompound data = CustomDataHelper.getPersistentData(player);
