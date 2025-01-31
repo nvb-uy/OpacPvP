@@ -32,7 +32,8 @@
 		"fabricloader": ">=0.15.0",
 		"minecraft": "${mc}",
 		"fabric-api": "*",
-		"necronomicon": ">=1.6.0"
+		"necronomicon": ">=1.6.0",
+		"openpartiesandclaims": "*"
 	},
 	"accessWidener": "${id}.accesswidener"
 }

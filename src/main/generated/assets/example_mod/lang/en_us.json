@@ -1,4 +1,4 @@
 {
-  "example_mod.configuration.client": "client",
-  "example_mod.configuration.example": "example"
+  "opacpvp.configuration.client": "client",
+  "opacpvp.configuration.example": "example"
 }
