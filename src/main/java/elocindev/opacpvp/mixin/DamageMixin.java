@@ -43,18 +43,26 @@ public class DamageMixin {
         PlayerEntity ths = (PlayerEntity) (Object) this;
 
         if (ths instanceof ServerPlayerEntity player) {
-            boolean status = true;
+            boolean statusA = true;
+            boolean statusB = true;
 
             //?if fabric {
-            NbtCompound data = CustomDataHelper.getPersistentData(player);
+            NbtCompound dataA = CustomDataHelper.getPersistentData(player);
+            if (src.getAttacker() instanceof ServerPlayerEntity serverAttacker) {
+                NbtCompound dataB = CustomDataHelper.getPersistentData(serverAttacker);
+
+                if ((dataB.contains("opacpvp") && Configs.MAIN.enable_personal_preference_command)) {
+                    statusB = dataB.getBoolean("opacpvp");
+                }
+            }
             
-            if ((data.contains("opacpvp") && Configs.MAIN.enable_personal_preference_command)) {
-                status = data.getBoolean("opacpvp");
+            if ((dataA.contains("opacpvp") && Configs.MAIN.enable_personal_preference_command)) {
+                statusA = dataA.getBoolean("opacpvp");
             }
             //?}
             
             if (src.getAttacker() instanceof PlayerEntity attacker) {
-                if (arePlayersInSameParty(ths, attacker) && status) {
+                if (arePlayersInSameParty(ths, attacker) && statusA && statusB) {
                     ci.setReturnValue(false);
                 }
             }
