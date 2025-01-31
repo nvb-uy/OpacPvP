@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "${id}",
+	"name": "${display_name}",
+	"version": "${modversion}",
+	"description": "${description}",
+	"authors": [
+		"${author}"
+	],
+	"contact": {
+		"sources": "https://github.com/${github}/${name}",
+		"issues": "https://github.com/${github}/${name}/issues"
+	},
+	"license": "${license}",
+	"icon": "assets/${id}/logo.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"${group}.${namespace}.${name}"
+		],
+		"client": [
+			"${group}.${namespace}.${name}"
+		],
+		"fabric-datagen": [
+			"${group}.${namespace}.foundation.data.${name}Datagen"
+		]
+	},
+	"mixins": [
+		"mixins.${id}.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.0",
+		"minecraft": "${mc}",
+		"fabric-api": "*",
+		"necronomicon": ">=1.6.0"
+	},
+	"accessWidener": "${id}.accesswidener"
+}

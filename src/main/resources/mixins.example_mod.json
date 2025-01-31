@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "elocindev.examplemod.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "mixins": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+  ]
+}
