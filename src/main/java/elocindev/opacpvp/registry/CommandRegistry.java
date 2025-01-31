@@ -1,18 +1,22 @@
 package elocindev.opacpvp.registry;
 
-import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 
 import static net.minecraft.server.command.CommandManager.*;
 
+//?if fabric {
 import com.faux.customentitydata.api.CustomDataHelper;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+//?}
 
 import elocindev.opacpvp.config.Configs;
 
 public class CommandRegistry {
     public static void register() {
+        //?if fabric {
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             dispatcher.register(literal("opacpvp")
             .requires(source -> true)
@@ -40,5 +44,6 @@ public class CommandRegistry {
                 return -1;
             }));
         });
+        //?}
     }
 }

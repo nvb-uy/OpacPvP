@@ -7,7 +7,9 @@ public class Configs {
     public static OpacPvPConfig MAIN = OpacPvPConfig.INSTANCE;
 
     public static void loadCommonConfigs() {
+        //?if fabric {
         NecConfigAPI.registerConfig(OpacPvPConfig.class);
+        //?}
     }
 
     public static void loadClientConfigs() {}

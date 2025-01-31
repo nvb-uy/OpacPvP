@@ -8,24 +8,23 @@ val templateSettings = object : BlahajSettings {
 			deps.modImplementation("maven.modrinth:necronomicon:${project.property("deps.necronomicon_version")}")
 
 			deps.modImplementation("maven.modrinth:open-parties-and-claims:fabric-1.20.1-0.23.7")
-			deps.modImplementation("maven.modrinth:faux-custom-entity-data:6.0.1-fabric")
 		}
 
 		override fun addFabric(mod : ModData, deps: DependencyHandler) {
-
+			deps.modImplementation("maven.modrinth:faux-custom-entity-data:6.0.1-fabric")
 		}
 
 		override fun addForge(mod : ModData, deps: DependencyHandler) {
-
+			
 		}
 
 		override fun addNeo(mod : ModData, deps: DependencyHandler) {
-
+			
 		}
 	}
 
 	// ---------- Curseforge/Modrinth Configuration ----------- //
-	// For configuring the dependecies that will show up on your mod page.
+	// For configuring the dependecies that will show up on your mod page.1
 	override val publishHandler: BlahajPublishDependencyHandler get() = object : BlahajPublishDependencyHandler {
 		override fun addShared(mod : ModData, deps: DependencyContainer) {
 			if (mod.isFabric) {

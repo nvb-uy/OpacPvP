@@ -8,7 +8,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+//?if fabric {
 import com.faux.customentitydata.api.CustomDataHelper;
+//?}
 
 import elocindev.opacpvp.config.Configs;
 import net.minecraft.entity.damage.DamageSource;
@@ -21,6 +23,7 @@ import xaero.pac.common.server.api.OpenPACServerAPI;
 @Mixin(PlayerEntity.class)
 public class DamageMixin {
 
+    //?if fabric {
     @Inject(at = @At("HEAD"), method = "onSpawn")
     public void opacpvp$onSpawn(CallbackInfo ci) {
         PlayerEntity ths = (PlayerEntity) (Object) this;
@@ -33,6 +36,7 @@ public class DamageMixin {
             }
         }
     }
+    //?}
 
     @Inject(at = @At("HEAD"), method = "damage")
     public void opacpvp$damage(DamageSource src, float amount, CallbackInfoReturnable<Boolean> ci) {
@@ -40,14 +44,17 @@ public class DamageMixin {
 
         if (ths instanceof ServerPlayerEntity player) {
             boolean status = true;
+
+            //?if fabric {
             NbtCompound data = CustomDataHelper.getPersistentData(player);
             
             if ((data.contains("opacpvp") && Configs.MAIN.enable_personal_preference_command)) {
                 status = data.getBoolean("opacpvp");
             }
+            //?}
             
             if (src.getAttacker() instanceof PlayerEntity attacker) {
-                if (arePlayersInSameParty(player, attacker) && status) {
+                if (arePlayersInSameParty(ths, attacker) && status) {
                     ci.setReturnValue(false);
                 }
             }
