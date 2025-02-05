@@ -42,7 +42,7 @@ public class DamageMixin {
     }
     //?}
 
-    @Inject(at = @At("HEAD"), method = "damage")
+    @Inject(at = @At("HEAD"), method = "damage", cancellable = true)
     public void opacpvp$damage(DamageSource src, float amount, CallbackInfoReturnable<Boolean> ci) {
         PlayerEntity ths = (PlayerEntity) (Object) this;
 
